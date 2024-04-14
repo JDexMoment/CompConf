@@ -9,5 +9,4 @@ public class CompConfApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(CompConfApplication.class, args);
 	}
-//sdfs
 }
