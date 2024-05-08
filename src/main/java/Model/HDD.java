@@ -1,16 +1,29 @@
 package Model;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.w3c.dom.Text;
+import jakarta.persistence.*;
+import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Getter
+@Setter
+@Entity(name = "HDD")
+@Table(name = "HDD")
 public class HDD {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "HDD_seq_gen")
+    @SequenceGenerator(name = "HDD_seq_gen", sequenceName = "HDD_seq", allocationSize = 1)
+    @Column(name = "Id")
     private Long id;
+
+    @Column(name = "Name")
     private String Name;
+
+    @Column(name = "Cost")
     private int Cost;
-    private Text Description;
+
+    @Column(name = "Description")
+    private String Description;
 }
