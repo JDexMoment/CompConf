@@ -29,4 +29,8 @@ public class SSD {
 
     @Column(name = "Description")
     private String Description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "computer_id")
+    private Computer computer;
 }

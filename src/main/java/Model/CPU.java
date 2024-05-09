@@ -2,7 +2,8 @@ package Model;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.w3c.dom.Text;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -27,4 +28,8 @@ public class CPU {
 
     @Column(name = "Description")
     private String Description;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "computer_id")
+    private Computer computer;
 }

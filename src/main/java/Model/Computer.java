@@ -3,6 +3,8 @@ package Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -17,43 +19,47 @@ public class Computer {
     @Column(name = "Id")
     private Long id;
 
-    @Column(name = "CPU")
-    private String CPU;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "Wish_List_Id")
+    private WishList wishList;
 
-    @Column(name = "GPU")
-    private String GPU;
+    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CPU> CPUId;
 
-    @Column(name = "MotherBoard")
-    private String MotherBoard;
+    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<GPU> GPUId;
 
-    @Column(name = "Cooler")
-    private String Cooler;
+    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<MotherBoard> MotherBoardId;
 
-    @Column(name = "RAM")
-    private String RAM;
+    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Cooler> CoolerId;
 
-    @Column(name = "CountRam")
+    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<RAM> RAMId;
+
+    @Column(name = "Count_Ram")
     private int CountRAM;
 
-    @Column(name = "SSD")
-    private String SSD;
+    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<SSD> SSDId;
 
-    @Column(name = "Count SSD")
+    @Column(name = "Count_SSD")
     private int CountSSD;
 
-    @Column(name = "HDD")
-    private String HDD;
+    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<HDD> HDDId;
 
-    @Column(name = "CountHDD")
+    @Column(name = "Count_HDD")
     private int CountHDD;
 
-    @Column(name = "ComputerCase")
-    private String ComputerCase;
+    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<ComputerCase> ComputerCaseId;
 
-    @Column(name = "PowerUnit")
-    private String PowerUnit;
+    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PowerUnit> PowerUnitId;
 
-    @Column(name = "TotalCost")
+    @Column(name = "Total_Cost")
     private int TotalCost;
 
 }

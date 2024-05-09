@@ -23,4 +23,8 @@ public class User {
 
     @Column(name = "Password")
     private String password;
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private WishList wishList;
+
 }

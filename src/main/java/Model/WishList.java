@@ -3,25 +3,27 @@ package Model;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "WhishList")
-@Table(name = "WhishList")
+@Entity(name = "WishList")
+@Table(name = "WishList")
 public class WishList {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Whish_seq_gen")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Wish_seq_gen")
     @SequenceGenerator(name = "Wish_seq_gen", sequenceName = "Wish_seq", allocationSize = 1)
     @Column(name = "Id")
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "UserId")
-    private User UserId;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
-    @OneToOne(mappedBy = "id", cascade = CascadeType.ALL)
-    private Computer ComputerId;
+    @OneToMany(mappedBy = "wishList", orphanRemoval = true, fetch = FetchType.EAGER, targetEntity = Computer.class)
+    private List<Computer> computers;
 }
