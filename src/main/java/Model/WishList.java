@@ -25,5 +25,5 @@ public class WishList {
     private User user;
 
     @OneToMany(mappedBy = "wishList", orphanRemoval = true, fetch = FetchType.EAGER, targetEntity = Computer.class)
-    private List<Computer> computers;
+    private List<Computer> Computers;
 }

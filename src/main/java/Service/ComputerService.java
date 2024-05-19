@@ -1,43 +1,11 @@
 package Service;
 
-import Model.*;
+import Model.Computer;
 
+import java.util.List;
 import java.util.Optional;
 
 public interface ComputerService {
-    static Optional<CPU> getCPUNameById(Long id) {
-        return Optional.empty();
-    }
-
-    static Optional<GPU> getGPUNameById(Long id) {
-        return Optional.empty();
-    }
-
-    static Optional<MotherBoard> getMotherBoardNameById(Long id) {
-        return Optional.empty();
-    }
-
-    static Optional<Cooler> getCoolerNameById(Long id) {
-        return Optional.empty();
-    }
-
-    static Optional<RAM> getRAMNameById(Long id) {
-        return Optional.empty();
-    }
-
-    static Optional<SSD> getSSDNameById(Long id) {
-        return Optional.empty();
-    }
-
-    static Optional<HDD> getHDDNameById(Long id) {
-        return Optional.empty();
-    }
-
-    static Optional<ComputerCase> getComputerCaseNameById(Long id) {
-        return Optional.empty();
-    }
-
-    static Optional<PowerUnit> getPowerUnitNameById(Long id) {
-        return Optional.empty();
-    }
+    List<Computer> getComputers();
+    Optional<Computer> getComputerById(Long id);
 }

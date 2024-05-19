@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.util.List;
 
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
@@ -23,41 +22,50 @@ public class Computer {
     @JoinColumn(name = "Wish_List_Id")
     private WishList wishList;
 
-    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<CPU> CPUId;
+    @OneToOne
+    @JoinColumn(name = "CPU_id")
+    private Complect CPU;
 
-    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<GPU> GPUId;
+    @OneToOne
+    @JoinColumn(name = "GPU_id")
+    private Complect GPU;
 
-    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<MotherBoard> MotherBoardId;
+    @OneToOne
+    @JoinColumn(name = "MotherBoard_id")
+    private Complect MotherBoard;
 
-    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Cooler> CoolerId;
+    @OneToOne
+    @JoinColumn(name = "Cooler_id")
+    private Complect Cooler;
 
-    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<RAM> RAMId;
+    @OneToOne
+    @JoinColumn(name = "RAM_id")
+    private Complect RAM;
 
     @Column(name = "Count_Ram")
     private int CountRAM;
 
-    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<SSD> SSDId;
+    @OneToOne
+    @JoinColumn(name = "SSD_id")
+    private Complect SSD;
 
     @Column(name = "Count_SSD")
     private int CountSSD;
 
-    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<HDD> HDDId;
+    @OneToOne
+    @JoinColumn(name = "HDD_id")
+    private Complect HDD;
 
     @Column(name = "Count_HDD")
     private int CountHDD;
 
-    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<ComputerCase> ComputerCaseId;
+    @OneToOne
+    @JoinColumn(name = "ComputerCase_id")
+    private Complect ComputerCase;
 
-    @OneToMany(mappedBy = "computer", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<PowerUnit> PowerUnitId;
+    @OneToOne
+    @JoinColumn(name = "PowerUnit_id")
+    private Complect PowerUnit;
 
     @Column(name = "Total_Cost")
     private int TotalCost;
