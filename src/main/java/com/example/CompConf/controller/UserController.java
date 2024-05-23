@@ -1,7 +1,7 @@
-package Controller;
+package com.example.CompConf.controller;
 
-import Model.User;
-import Service.UserService;
+import com.example.CompConf.model.User;
+import com.example.CompConf.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;

@@ -3,6 +3,7 @@ package Controller;
 import Model.Complect;
 import Service.ComplectService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,18 +16,23 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/complect")
+@Slf4j
 public class ComplectGetController {
     private final ComplectService complectService;
 
     @GetMapping("/{id}")
-    ResponseEntity<Complect> getComplect(@PathVariable Long id) {
-        return complectService.getComplectById(id).map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+    public ResponseEntity<Complect> getComplectById(@PathVariable Long id) {
+        log.info("Received GET request for complect with id: {}", id);
+        return complectService.getComplectById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
     }
 
     @GetMapping("/CPU")
     public ResponseEntity<List<Complect>> getCPU() {
-        List<Complect> Complects = complectService.getCPU();
-        return new ResponseEntity<>(Complects, HttpStatus.OK);
+        log.info("Received GET request for CPU complects");
+        List<Complect> complects = complectService.getCPU();
+        return new ResponseEntity<>(complects, HttpStatus.OK);
     }
 
     @GetMapping("/GPU")
