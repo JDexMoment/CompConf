@@ -1,4 +1,4 @@
-package Model;
+package com.example.CompConf.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -8,8 +8,8 @@ import lombok.*;
 @NoArgsConstructor
 @Getter
 @Setter
-@Entity(name = "User")
-@Table(name = "User")
+@Entity(name = "App_User")
+@Table(name = "App_User")
 public class User {
 
     @Id
@@ -24,7 +24,7 @@ public class User {
     @Column(name = "Password")
     private String password;
 
-    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private WishList wishList;
 
 }

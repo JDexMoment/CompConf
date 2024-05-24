@@ -1,7 +1,7 @@
-package Service;
+package com.example.CompConf.service;
 
-import Model.Complect;
-import Repository.ComplectRepository;
+import com.example.CompConf.model.Complect;
+import com.example.CompConf.repository.ComplectRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -41,6 +41,7 @@ public class ComplectServiceImpl implements ComplectService {
         return complectRepository.findById(id);
     }
 
+
     @Override
     public void registerComplect(Complect complect) {
         complectRepository.save(complect);
@@ -48,47 +49,47 @@ public class ComplectServiceImpl implements ComplectService {
 
     @Override
     public List<Complect> getCPU() {
-        return complectRepository.findAllById(CPUs);
+        return complectRepository.findByType("CPU");
     }
 
     @Override
     public List<Complect> getGPU() {
-        return complectRepository.findAllById(GPUs);
+        return complectRepository.findByType("GPU");
     }
 
     @Override
     public List<Complect> getMotherBoard() {
-        return complectRepository.findAllById(MBs);
+        return complectRepository.findByType("MotherBoard");
     }
 
     @Override
     public List<Complect> getCooler() {
-        return complectRepository.findAllById(Coolers);
+        return complectRepository.findByType("Cooler");
     }
 
     @Override
     public List<Complect> getRAM() {
-        return complectRepository.findAllById(RAMs);
+        return complectRepository.findByType("RAM");
     }
 
     @Override
     public List<Complect> getSSD() {
-        return complectRepository.findAllById(SSDs);
+        return complectRepository.findByType("SSD");
     }
 
     @Override
     public List<Complect> getHDD() {
-        return complectRepository.findAllById(HDDs);
+        return complectRepository.findByType("HDD");
     }
 
     @Override
     public List<Complect> getComputerCase() {
-        return complectRepository.findAllById(CCs);
+        return complectRepository.findByType("ComputerCase");
     }
 
     @Override
     public List<Complect> getPowerUnit() {
-        return complectRepository.findAllById(PUs);
+        return complectRepository.findByType("PowerUnit");
     }
 
     @Override

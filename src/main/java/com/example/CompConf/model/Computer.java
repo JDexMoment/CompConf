@@ -1,4 +1,4 @@
-package Model;
+package com.example.CompConf.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -22,50 +22,45 @@ public class Computer {
     @JoinColumn(name = "Wish_List_Id")
     private WishList wishList;
 
-    @OneToOne
-    @JoinColumn(name = "CPU_id")
-    private Complect CPU;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "complect_id")
+    private Complect complect;
 
-    @OneToOne
-    @JoinColumn(name = "GPU_id")
-    private Complect GPU;
+    @Column(name = "CPU")
+    private Long CPU;
 
-    @OneToOne
-    @JoinColumn(name = "MotherBoard_id")
-    private Complect MotherBoard;
+    @Column(name = "GPU")
+    private Long GPU;
 
-    @OneToOne
-    @JoinColumn(name = "Cooler_id")
-    private Complect Cooler;
+    @Column(name = "Mother_Board")
+    private Long MotherBoard;
 
-    @OneToOne
-    @JoinColumn(name = "RAM_id")
-    private Complect RAM;
+    @Column(name = "Cooler")
+    private Long Cooler;
+
+    @Column(name = "RAM")
+    private Long RAM;
 
     @Column(name = "Count_Ram")
     private int CountRAM;
 
-    @OneToOne
-    @JoinColumn(name = "SSD_id")
-    private Complect SSD;
+    @Column(name = "SSD")
+    private Long SSD;
 
     @Column(name = "Count_SSD")
     private int CountSSD;
 
-    @OneToOne
-    @JoinColumn(name = "HDD_id")
-    private Complect HDD;
+    @Column(name = "HDD")
+    private Long HDD;
 
     @Column(name = "Count_HDD")
     private int CountHDD;
 
-    @OneToOne
-    @JoinColumn(name = "ComputerCase_id")
-    private Complect ComputerCase;
+    @Column(name = "Computer_Case")
+    private Long ComputerCase;
 
-    @OneToOne
-    @JoinColumn(name = "PowerUnit_id")
-    private Complect PowerUnit;
+    @Column(name = "Power_Unit")
+    private Long PowerUnit;
 
     @Column(name = "Total_Cost")
     private int TotalCost;

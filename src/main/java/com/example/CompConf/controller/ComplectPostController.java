@@ -1,7 +1,7 @@
-package Controller;
+package com.example.CompConf.controller;
 
-import Model.Complect;
-import Service.ComplectService;
+import com.example.CompConf.model.Complect;
+import com.example.CompConf.service.ComplectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;

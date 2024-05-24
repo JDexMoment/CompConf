@@ -1,9 +1,8 @@
-package Controller;
+package com.example.CompConf.controller;
 
-import Model.Computer;
-import Repository.ComputerRepository;
-import Service.ComplectService;
-import Service.ComputerService;
+import com.example.CompConf.model.Computer;
+import com.example.CompConf.service.ComplectService;
+import com.example.CompConf.service.ComputerService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

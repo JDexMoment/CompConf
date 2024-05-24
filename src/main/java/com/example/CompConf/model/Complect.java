@@ -1,4 +1,4 @@
-package Model;
+package com.example.CompConf.model;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -32,5 +32,8 @@ public class Complect {
 
     @Column(name = "description")
     private String description;
+
+    @OneToMany(mappedBy = "complect", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Computer> computers;
 
 }

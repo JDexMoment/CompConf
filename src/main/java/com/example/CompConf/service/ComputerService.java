@@ -1,6 +1,6 @@
-package Service;
+package com.example.CompConf.service;
 
-import Model.Computer;
+import com.example.CompConf.model.Computer;
 
 import java.util.List;
 import java.util.Optional;

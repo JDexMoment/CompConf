@@ -1,7 +1,7 @@
-package Service;
+package com.example.CompConf.service;
 
-import Model.Computer;
-import Repository.ComputerRepository;
+import com.example.CompConf.model.Computer;
+import com.example.CompConf.repository.ComputerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

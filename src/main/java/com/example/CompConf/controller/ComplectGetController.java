@@ -1,7 +1,7 @@
-package Controller;
+package com.example.CompConf.controller;
 
-import Model.Complect;
-import Service.ComplectService;
+import com.example.CompConf.model.Complect;
+import com.example.CompConf.service.ComplectService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -30,56 +30,55 @@ public class ComplectGetController {
 
     @GetMapping("/CPU")
     public ResponseEntity<List<Complect>> getCPU() {
-        log.info("Received GET request for CPU complects");
         List<Complect> complects = complectService.getCPU();
-        return new ResponseEntity<>(complects, HttpStatus.OK);
+        return ResponseEntity.ok(complects);
     }
 
     @GetMapping("/GPU")
     public ResponseEntity<List<Complect>> getGPU() {
-        List<Complect> Complects = complectService.getGPU();
-        return new ResponseEntity<>(Complects, HttpStatus.OK);
+        List<Complect> complects = complectService.getGPU();
+        return ResponseEntity.ok(complects);
     }
 
-    @GetMapping("/MB")
-    public ResponseEntity<List<Complect>> getMB() {
-        List<Complect> Complects = complectService.getMotherBoard();
-        return new ResponseEntity<>(Complects, HttpStatus.OK);
+    @GetMapping("/MotherBoard")
+    public ResponseEntity<List<Complect>> getMotherBoard() {
+        List<Complect> complects = complectService.getMotherBoard();
+        return ResponseEntity.ok(complects);
     }
 
     @GetMapping("/Cooler")
     public ResponseEntity<List<Complect>> getCooler() {
-        List<Complect> Complects = complectService.getCooler();
-        return new ResponseEntity<>(Complects, HttpStatus.OK);
+        List<Complect> complects = complectService.getCooler();
+        return ResponseEntity.ok(complects);
     }
 
     @GetMapping("/RAM")
     public ResponseEntity<List<Complect>> getRAM() {
-        List<Complect> Complects = complectService.getRAM();
-        return new ResponseEntity<>(Complects, HttpStatus.OK);
+        List<Complect> complects = complectService.getRAM();
+        return ResponseEntity.ok(complects);
     }
 
     @GetMapping("/SSD")
     public ResponseEntity<List<Complect>> getSSD() {
-        List<Complect> Complects = complectService.getSSD();
-        return new ResponseEntity<>(Complects, HttpStatus.OK);
+        List<Complect> complects = complectService.getSSD();
+        return ResponseEntity.ok(complects);
     }
 
     @GetMapping("/HDD")
     public ResponseEntity<List<Complect>> getHDD() {
-        List<Complect> Complects = complectService.getHDD();
-        return new ResponseEntity<>(Complects, HttpStatus.OK);
+        List<Complect> complects = complectService.getHDD();
+        return ResponseEntity.ok(complects);
     }
 
-    @GetMapping("/CC")
-    public ResponseEntity<List<Complect>> getCC() {
-        List<Complect> Complects = complectService.getComputerCase();
-        return new ResponseEntity<>(Complects, HttpStatus.OK);
+    @GetMapping("/ComputerCase")
+    public ResponseEntity<List<Complect>> getComputerCase() {
+        List<Complect> complects = complectService.getComputerCase();
+        return ResponseEntity.ok(complects);
     }
 
-    @GetMapping("/PU")
-    public ResponseEntity<List<Complect>> getPU() {
-        List<Complect> Complects = complectService.getPowerUnit();
-        return new ResponseEntity<>(Complects, HttpStatus.OK);
+    @GetMapping("/PowerUnit")
+    public ResponseEntity<List<Complect>> getPowerUnit() {
+        List<Complect> complects = complectService.getPowerUnit();
+        return ResponseEntity.ok(complects);
     }
 }

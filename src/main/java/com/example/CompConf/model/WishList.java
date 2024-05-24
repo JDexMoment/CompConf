@@ -1,4 +1,4 @@
-package Model;
+package com.example.CompConf.model;
 
 import jakarta.persistence.*;
 import lombok.*;

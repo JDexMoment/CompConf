@@ -15,6 +15,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
+
     ResponseEntity<Void> registerUser(User user) {
         userService.registerUser(user);
         return ResponseEntity.ok().build();

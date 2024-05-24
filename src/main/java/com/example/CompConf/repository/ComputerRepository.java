@@ -1,6 +1,6 @@
-package Repository;
+package com.example.CompConf.repository;
 
-import Model.Computer;
+import com.example.CompConf.model.Computer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
