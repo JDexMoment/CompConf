@@ -1,9 +1,10 @@
 package com.example.CompConf.controller;
 
+import com.example.CompConf.model.Complect;
 import com.example.CompConf.model.Computer;
-import com.example.CompConf.service.ComplectService;
 import com.example.CompConf.service.ComputerService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,24 +15,39 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @RequestMapping("/computer")
 public class ComputerController {
-    private final ComplectService complectService;
 
     private final ComputerService computerService;
 
-    @GetMapping
-    public ResponseEntity<List<Computer>> getComputers() {
-        List<Computer> computers = computerService.getComputers();
-        return ResponseEntity.ok(computers);
-    }
-
     @GetMapping("/{id}")
     public ResponseEntity<Computer> getComputerById(@PathVariable Long id) {
-        Optional<Computer> computer = computerService.getComputerById(id);
-        return computer.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+        Optional<Computer> computerDetails = computerService.getComputerById(id);
+        return computerDetails.map(ResponseEntity::ok)
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PostMapping("/{Computerid}/CPU/{CPUid}")
-    public ResponseEntity<String> setCPUNameById(@PathVariable Long Computerid, @PathVariable Long CPUid) {
-        return complectService.setCPUNameById(CPUid).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    @PostMapping
+    public ResponseEntity<Void> createComputer(@RequestBody Computer computer) {
+        computerService.createComputer(computer);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Computer> updateComputer(@PathVariable Long id, @RequestBody Computer computerDetails) {
+        try {
+            Computer updatedComputer = computerService.updateComputer(id, computerDetails);
+            return ResponseEntity.ok(updatedComputer);
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteComputer(@PathVariable Long id) {
+        try {
+            computerService.deleteComputer(id);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

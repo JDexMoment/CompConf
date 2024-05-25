@@ -1,5 +1,9 @@
 package com.example.CompConf.model;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -12,18 +16,19 @@ import java.util.List;
 @Setter
 @Entity(name = "WishList")
 @Table(name = "WishList")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class WishList {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "Wish_seq_gen")
-    @SequenceGenerator(name = "Wish_seq_gen", sequenceName = "Wish_seq", allocationSize = 1)
-    @Column(name = "Id")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "wishlist_seq_gen")
+    @SequenceGenerator(name = "wishlist_seq_gen", sequenceName = "wishlist_seq", allocationSize = 1)
+    @Column(name = "id")
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @OneToOne
+    @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "wishList", orphanRemoval = true, fetch = FetchType.EAGER, targetEntity = Computer.class)
-    private List<Computer> Computers;
+    @JsonIgnore
+    @OneToMany(mappedBy = "wishList", fetch = FetchType.EAGER)
+    private List<Computer> computers;
 }

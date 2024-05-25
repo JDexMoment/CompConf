@@ -1,9 +1,9 @@
 package com.example.CompConf.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,50 +19,55 @@ public class Computer {
     private Long id;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "Wish_List_Id")
+    @JoinColumn(name = "wish_list_id")
     private WishList wishList;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "complect_id")
-    private Complect complect;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cpu_id")
+    private Complect cpu;
 
-    @Column(name = "CPU")
-    private Long CPU;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "gpu_id")
+    private Complect gpu;
 
-    @Column(name = "GPU")
-    private Long GPU;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "mother_board__id")
+    private Complect motherBoard;
 
-    @Column(name = "Mother_Board")
-    private Long MotherBoard;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cooler_id")
+    private Complect cooler;
 
-    @Column(name = "Cooler")
-    private Long Cooler;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ram_id")
+    private Complect ram;
 
-    @Column(name = "RAM")
-    private Long RAM;
+    @Column(name = "count_Ram")
+    private int countRAM;
 
-    @Column(name = "Count_Ram")
-    private int CountRAM;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ssd_id")
+    private Complect ssd;
 
-    @Column(name = "SSD")
-    private Long SSD;
-
-    @Column(name = "Count_SSD")
+    @Column(name = "count_SSD")
     private int CountSSD;
 
-    @Column(name = "HDD")
-    private Long HDD;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "hdd_id")
+    private Complect hdd;
 
-    @Column(name = "Count_HDD")
+    @Column(name = "count_HDD")
     private int CountHDD;
 
-    @Column(name = "Computer_Case")
-    private Long ComputerCase;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "computer_case_id")
+    private Complect computerCase;
 
-    @Column(name = "Power_Unit")
-    private Long PowerUnit;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "power_unit_id")
+    private Complect powerUnit;
 
-    @Column(name = "Total_Cost")
-    private int TotalCost;
+    @Column(name = "total_cost")
+    private int totalCost;
 
 }

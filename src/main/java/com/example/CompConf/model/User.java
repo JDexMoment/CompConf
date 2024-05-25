@@ -1,5 +1,6 @@
 package com.example.CompConf.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -24,6 +25,7 @@ public class User {
     @Column(name = "Password")
     private String password;
 
+    @JsonIgnore
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     private WishList wishList;
 
