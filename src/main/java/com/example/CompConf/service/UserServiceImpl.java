@@ -1,41 +1,47 @@
 package com.example.CompConf.service;
 
+import com.example.CompConf.exceptions.UsernameAlreadyExistsException;
 import com.example.CompConf.model.User;
+import com.example.CompConf.model.UserAuthority;
+import com.example.CompConf.model.UserRole;
 import com.example.CompConf.repository.UserRepository;
+import com.example.CompConf.repository.UserRolesRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.Optional;
-
-@Service
 @RequiredArgsConstructor
-public class UserServiceImpl implements UserService {
+@Service
+public class UserServiceImpl implements UserService, UserDetailsService {
 
+    private final UserRolesRepository userRolesRepository;
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
-    public void registerUser(User user) {
-
+    public void registration(String username, String password) {
+        if (userRepository.findByUsername(username).isEmpty()) {
+            User user = userRepository.save(
+                    new User()
+                            .setId(null)
+                            .setUsername(username)
+                            .setPassword(passwordEncoder.encode(password))
+                            .setLocked(false)
+                            .setExpired(false)
+                            .setEnabled(true)
+            );
+            userRolesRepository.save(new UserRole(null, UserAuthority.PLACE_ORDERS, user));
+        }
+        else {
+            throw new UsernameAlreadyExistsException();
+        }
     }
 
     @Override
-    public void loginUser(User user) {
-
-    }
-
-    @Override
-    public List<User> getUsers() {
-        return List.of();
-    }
-
-    @Override
-    public Optional<User> getUserById(Long id) {
-        return Optional.empty();
-    }
-
-    @Override
-    public void addToWishList(User user) {
-
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return userRepository.findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(username));
     }
 }
