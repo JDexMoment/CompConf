@@ -1,0 +1,36 @@
+{
+    "wishList": {
+        "id": "1"
+    },
+    "cpu": {
+        "id": "1"
+    },
+    "gpu": {
+        "id": "104"
+    },
+    "motherBoard": {
+        "id": "152"
+    },
+    "cooler": {
+        "id": "153"   
+    },
+    "ram": {
+        "id": "154"
+    },
+    "countRAM": 1,
+    "ssd": {
+        "id": "155"
+    },
+    "countSSD": 1,
+    "hdd": {
+        "id": "156"
+    },
+    "countHDD": 1,
+    "computerCase": {
+        "id": "158"
+    },
+    "powerUnit": {
+        "id": "159"
+    },
+    "totalCost": 87479
+}
