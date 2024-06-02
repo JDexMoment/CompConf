@@ -62,21 +62,4 @@ public class ComputerServiceImpl implements ComputerService {
         return computerRepository.findById(id);
     }
 
-//    public Optional<Computer> getComputerDetailsById(Long id) {
-//        return computerRepository.findById(id).map(computer -> {
-//            computer.setCpu(Objects.requireNonNull(getComplectById(computer.getCpu().getId()).orElse(null)));
-//            computer.setGpu(Objects.requireNonNull(getComplectById(computer.getGpu().getId()).orElse(null)));
-//            computer.setMotherBoard(Objects.requireNonNull(getComplectById(computer.getMotherBoard().getId()).orElse(null)));
-//            computer.setCooler(Objects.requireNonNull(getComplectById(computer.getCooler().getId()).orElse(null)));
-//            computer.setRam(Objects.requireNonNull(getComplectById(computer.getRam().getId()).orElse(null)));
-//            computer.setSsd(Objects.requireNonNull(getComplectById(computer.getSsd().getId()).orElse(null)));
-//            computer.setHdd(Objects.requireNonNull(getComplectById(computer.getHdd().getId()).orElse(null)));
-//            computer.setComputerCase(Objects.requireNonNull(getComplectById(computer.getComputerCase().getId()).orElse(null)));
-//            computer.setPowerUnit(Objects.requireNonNull(getComplectById(computer.getPowerUnit().getId()).orElse(null)));
-//            return computer;
-//        });
-//    }
-
-
-
 }
