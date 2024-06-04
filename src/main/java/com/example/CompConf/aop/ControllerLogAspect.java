@@ -6,7 +6,6 @@ import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -17,7 +16,7 @@ import java.util.List;
 @Aspect
 public class ControllerLogAspect {
 
-    @Pointcut("execution(public * com.example.CompConf.controller.*(..))")
+    @Pointcut("execution(public * com.example.CompConf.controller.*.*(..))")
     public void callController() {}
 
     @Before("callController()")
@@ -30,8 +29,7 @@ public class ControllerLogAspect {
     }
 
     @AfterReturning(value = "callController()", returning ="object")
-    public void afterCallController(JoinPoint joinPoint, ResponseEntity<?> object) {
-        log.info("Call {} with return {}", joinPoint.getSignature().getName(), object.getBody());
+    public void afterCallController(JoinPoint joinPoint, Object object) {
+        log.info("Call {} with return {}", joinPoint.getSignature().getName(), object);
     }
 }
-
