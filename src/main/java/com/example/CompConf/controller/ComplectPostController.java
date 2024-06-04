@@ -21,6 +21,7 @@ public class ComplectPostController {
     public ResponseEntity<Void> registerComplect(@RequestBody Complect complect) {
         log.info("Received POST request with complect: {}", complect);
         complectService.registerComplect(complect);
+        log.info("Registered complect: {}", complect);
         return ResponseEntity.ok().build();
     }
 }
