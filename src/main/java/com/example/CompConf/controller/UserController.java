@@ -42,7 +42,7 @@ public class UserController {
         return ResponseEntity.ok(computers);
     }
 
-    @GetMapping("/user/{userId}")
+    @GetMapping("/{userId}")
     public ResponseEntity<List<WishList>> getWishListByUserId(@PathVariable Long userId) {
         log.info("Received GET request for WishLists by user with id: {}", userId);
         List<WishList> wishLists = wishListService.getWishListByUserId(userId);

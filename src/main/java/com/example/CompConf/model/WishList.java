@@ -24,6 +24,7 @@ public class WishList {
     @Column(name = "id")
     private Long id;
 
+    @JsonIgnore
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;

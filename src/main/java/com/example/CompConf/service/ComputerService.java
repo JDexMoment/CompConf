@@ -10,6 +10,6 @@ public interface ComputerService {
     void deleteComputer(Long id);
     Computer updateComputer(Long id, Computer computer);
     //Optional<Computer> getComputerDetailsById(Long id);
-    Optional<Complect> getComplectById(Long id);
+    //Optional<Complect> getComplectById(Long id);
     Optional<Computer> getComputerById(Long id);
 }

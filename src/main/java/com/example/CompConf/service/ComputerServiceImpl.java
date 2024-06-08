@@ -51,12 +51,6 @@ public class ComputerServiceImpl implements ComputerService {
                 .orElseThrow(() -> new RuntimeException("Computer not found with id " + id));
     }
 
-
-    @Override
-    public Optional<Complect> getComplectById(Long id) {
-        return complectRepository.findById(id);
-    }
-
     @Override
     public Optional<Computer> getComputerById(Long id) {
         return computerRepository.findById(id);
