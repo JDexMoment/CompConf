@@ -22,9 +22,7 @@ public class RegistrationController {
             @RequestParam("username") String username,
             @RequestParam("password") String password
     ) {
-        log.info("Received request to register user with username: " + username + " and password: " + password);
         userService.registration(username, password);
-        log.info("Register user " + username + " with password " + password);
         return ResponseEntity.ok().build();
     }
 

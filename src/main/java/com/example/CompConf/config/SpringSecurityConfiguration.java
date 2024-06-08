@@ -22,9 +22,9 @@ public class SpringSecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
-                                .requestMatchers("/registration", "/login", "/complect/**","/computer/**", "/user/**").permitAll()
-                                //.requestMatchers(HttpMethod.POST, "/complect").hasAuthority(UserAuthority.PLACE_ORDERS.getAuthority())
-                                //.requestMatchers(HttpMethod.GET, "/computer/**").hasAuthority(UserAuthority.MANAGE_ORDERS.getAuthority())
+                                .requestMatchers("/registration", "/login").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/complect").hasAuthority(UserAuthority.PLACE_ORDERS.getAuthority())
+                                .requestMatchers(HttpMethod.GET, "/computer/**").hasAuthority(UserAuthority.MANAGE_ORDERS.getAuthority())
                                 .requestMatchers(HttpMethod.POST, "/computer").hasAuthority(UserAuthority.MANAGE_ORDERS.getAuthority())
                                 .anyRequest().hasAuthority(UserAuthority.FULL.getAuthority()))
                 .formLogin(Customizer.withDefaults())
