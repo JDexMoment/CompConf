@@ -1,0 +1,311 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1716554362356-1
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: comp_seq
+            startValue: 1
+  - changeSet:
+      id: 1716554362356-2
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 50
+            sequenceName: complect_hen_seq
+            startValue: 1
+  - changeSet:
+      id: 1716554362356-3
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: user_seq
+            startValue: 1
+  - changeSet:
+      id: 1716554362356-4
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: wish_seq
+            startValue: 1
+  - changeSet:
+      id: 1716554362356-5
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: app_user
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_app_user
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: login
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+            tableName: app_user
+  - changeSet:
+      id: 1716554362356-6
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: complect
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_complect
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: type
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: cost
+                  type: INT
+              - column:
+                  name: description
+                  type: VARCHAR(512)
+            tableName: complect
+  - changeSet:
+      id: 1716554362356-7
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: computer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_computer
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: wish_list_id
+                  type: BIGINT
+              - column:
+                  name: cpu_id
+                  type: BIGINT
+              - column:
+                  name: gpu_id
+                  type: BIGINT
+              - column:
+                  name: mother_board_id
+                  type: BIGINT
+              - column:
+                  name: cooler_id
+                  type: BIGINT
+              - column:
+                  name: ram_id
+                  type: BIGINT
+              - column:
+                  name: count_ram
+                  type: INT
+              - column:
+                  name: ssd_id
+                  type: BIGINT
+              - column:
+                  name: count_ssd
+                  type: INT
+              - column:
+                  name: hdd_id
+                  type: BIGINT
+              - column:
+                  name: count_hdd
+                  type: INT
+              - column:
+                  name: computer_case_id
+                  type: BIGINT
+              - column:
+                  name: power_unit_id
+                  type: BIGINT
+              - column:
+                  name: total_cost
+                  type: INT
+            tableName: computer
+  - changeSet:
+      id: 1716554362356-8
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: wish_list
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_wishlist
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+            tableName: wish_list
+  - changeSet:
+      id: 1716554362356-9
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addUniqueConstraint:
+            columnNames: user_id
+            constraintName: uc_wishlist_user
+            tableName: wish_list
+  - changeSet:
+      id: 1716554362356-10
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: computer_case_id
+            baseTableName: computer
+            constraintName: FK_COMPUTER_ON_COMPUTERCASE
+            referencedColumnNames: id
+            referencedTableName: complect
+  - changeSet:
+      id: 1716554362356-11
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cooler_id
+            baseTableName: computer
+            constraintName: FK_COMPUTER_ON_COOLER
+            referencedColumnNames: id
+            referencedTableName: complect
+  - changeSet:
+      id: 1716554362356-12
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: cpu_id
+            baseTableName: computer
+            constraintName: FK_COMPUTER_ON_CPU
+            referencedColumnNames: id
+            referencedTableName: complect
+  - changeSet:
+      id: 1716554362356-13
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: gpu_id
+            baseTableName: computer
+            constraintName: FK_COMPUTER_ON_GPU
+            referencedColumnNames: id
+            referencedTableName: complect
+  - changeSet:
+      id: 1716554362356-14
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: hdd_id
+            baseTableName: computer
+            constraintName: FK_COMPUTER_ON_HDD
+            referencedColumnNames: id
+            referencedTableName: complect
+  - changeSet:
+      id: 1716554362356-15
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: mother_board_id
+            baseTableName: computer
+            constraintName: FK_COMPUTER_ON_MOTHERBOARD
+            referencedColumnNames: id
+            referencedTableName: complect
+  - changeSet:
+      id: 1716554362356-16
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: power_unit_id
+            baseTableName: computer
+            constraintName: FK_COMPUTER_ON_POWERUNIT
+            referencedColumnNames: id
+            referencedTableName: complect
+  - changeSet:
+      id: 1716554362356-17
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ram_id
+            baseTableName: computer
+            constraintName: FK_COMPUTER_ON_RAM
+            referencedColumnNames: id
+            referencedTableName: complect
+  - changeSet:
+      id: 1716554362356-18
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: ssd_id
+            baseTableName: computer
+            constraintName: FK_COMPUTER_ON_SSD
+            referencedColumnNames: id
+            referencedTableName: complect
+  - changeSet:
+      id: 1716554362356-19
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: wish_list_id
+            baseTableName: computer
+            constraintName: FK_COMPUTER_ON_WISH_LIST
+            referencedColumnNames: id
+            referencedTableName: wish_list
+  - changeSet:
+      id: 1716554362356-20
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: wish_list
+            constraintName: FK_WISHLIST_ON_USER
+            referencedColumnNames: id
+            referencedTableName: app_user
+

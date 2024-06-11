@@ -1,0 +1,185 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1717329160759-6
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: app_user
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_app_user
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: username
+                  type: VARCHAR(255)
+              - column:
+                  name: password
+                  type: VARCHAR(255)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: expired
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: locked
+                  type: BOOLEAN
+              - column:
+                  constraints:
+                    nullable: false
+                  name: enabled
+                  type: BOOLEAN
+            tableName: app_user
+  - changeSet:
+      id: 1717329160759-7
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: complect
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_complect
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: type
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: cost
+                  type: INT
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+            tableName: complect
+  - changeSet:
+      id: 1717329160759-8
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: computer
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_computer
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: wish_list_id
+                  type: BIGINT
+              - column:
+                  name: cpu_id
+                  type: BIGINT
+              - column:
+                  name: gpu_id
+                  type: BIGINT
+              - column:
+                  name: mother_board__id
+                  type: BIGINT
+              - column:
+                  name: cooler_id
+                  type: BIGINT
+              - column:
+                  name: ram_id
+                  type: BIGINT
+              - column:
+                  name: count_ram
+                  type: INT
+              - column:
+                  name: ssd_id
+                  type: BIGINT
+              - column:
+                  name: count_ssd
+                  type: INT
+              - column:
+                  name: hdd_id
+                  type: BIGINT
+              - column:
+                  name: count_hdd
+                  type: INT
+              - column:
+                  name: computer_case_id
+                  type: BIGINT
+              - column:
+                  name: power_unit_id
+                  type: BIGINT
+              - column:
+                  name: total_cost
+                  type: INT
+            tableName: computer
+  - changeSet:
+      id: 1717329160759-9
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: user_roles
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_user_roles
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_authority
+                  type: SMALLINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+            tableName: user_roles
+  - changeSet:
+      id: 1717329160759-10
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: wish_list
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_wishlist
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+            tableName: wish_list

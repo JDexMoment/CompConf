@@ -1,0 +1,100 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1718101976986-3
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - createSequence:
+            incrementBy: 1
+            sequenceName: review_seq
+            startValue: 1
+  - changeSet:
+      id: 1718101976986-8
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: complect
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_complect
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: type
+                  type: VARCHAR(255)
+              - column:
+                  name: name
+                  type: VARCHAR(255)
+              - column:
+                  name: cost
+                  type: INT
+              - column:
+                  name: description
+                  type: VARCHAR(255)
+              - column:
+                  name: rating
+                  type: DOUBLE
+            tableName: complect
+  - changeSet:
+      id: 1718101976986-10
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      preConditions:
+        - onFail: MARK_RAN
+        - not:
+            tableExists:
+              tableName: review
+      changes:
+        - createTable:
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_review
+                  name: id
+                  type: BIGINT
+              - column:
+                  name: complect_id
+                  type: BIGINT
+              - column:
+                  name: user_id
+                  type: BIGINT
+              - column:
+                  name: rating
+                  type: INT
+              - column:
+                  name: review
+                  type: VARCHAR(255)
+            tableName: review
+  - changeSet:
+      id: 1718101976986-24
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: complect_id
+            baseTableName: review
+            constraintName: FK_REVIEW_ON_COMPLECT
+            referencedColumnNames: id
+            referencedTableName: complect
+  - changeSet:
+      id: 1718101976986-25
+      author: evgen (generated)
+      objectQuotingStrategy: QUOTE_ONLY_RESERVED_WORDS
+      changes:
+        - addForeignKeyConstraint:
+            baseColumnNames: user_id
+            baseTableName: review
+            constraintName: FK_REVIEW_ON_USER
+            referencedColumnNames: id
+            referencedTableName: app_user
+
