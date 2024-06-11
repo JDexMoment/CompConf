@@ -27,57 +27,9 @@ public class ComplectGetController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @GetMapping("/CPU")
-    public ResponseEntity<List<Complect>> getCPU() {
-        List<Complect> complects = complectService.getCPU();
-        return ResponseEntity.ok(complects);
-    }
-
-    @GetMapping("/GPU")
-    public ResponseEntity<List<Complect>> getGPU() {
-        List<Complect> complects = complectService.getGPU();
-        return ResponseEntity.ok(complects);
-    }
-
-    @GetMapping("/MotherBoard")
-    public ResponseEntity<List<Complect>> getMotherBoard() {
-        List<Complect> complects = complectService.getMotherBoard();
-        return ResponseEntity.ok(complects);
-    }
-
-    @GetMapping("/Cooler")
-    public ResponseEntity<List<Complect>> getCooler() {
-        List<Complect> complects = complectService.getCooler();
-        return ResponseEntity.ok(complects);
-    }
-
-    @GetMapping("/RAM")
-    public ResponseEntity<List<Complect>> getRAM() {
-        List<Complect> complects = complectService.getRAM();
-        return ResponseEntity.ok(complects);
-    }
-
-    @GetMapping("/SSD")
-    public ResponseEntity<List<Complect>> getSSD() {
-        List<Complect> complects = complectService.getSSD();
-        return ResponseEntity.ok(complects);
-    }
-
-    @GetMapping("/HDD")
-    public ResponseEntity<List<Complect>> getHDD() {
-        List<Complect> complects = complectService.getHDD();
-        return ResponseEntity.ok(complects);
-    }
-
-    @GetMapping("/ComputerCase")
-    public ResponseEntity<List<Complect>> getComputerCase() {
-        List<Complect> complects = complectService.getComputerCase();
-        return ResponseEntity.ok(complects);
-    }
-
-    @GetMapping("/PowerUnit")
-    public ResponseEntity<List<Complect>> getPowerUnit() {
-        List<Complect> complects = complectService.getPowerUnit();
+    @GetMapping("/type/{type}")
+    public ResponseEntity<List<Complect>> getComplectsByType(@PathVariable String type) {
+        List<Complect> complects = complectService.getComplectsByType(type);
         return ResponseEntity.ok(complects);
     }
 }

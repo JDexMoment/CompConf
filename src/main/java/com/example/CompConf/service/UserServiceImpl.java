@@ -4,7 +4,6 @@ import com.example.CompConf.exceptions.UsernameAlreadyExistsException;
 import com.example.CompConf.model.*;
 import com.example.CompConf.repository.UserRepository;
 import com.example.CompConf.repository.UserRolesRepository;
-import com.example.CompConf.repository.WishListRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;

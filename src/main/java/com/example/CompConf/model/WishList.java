@@ -28,8 +28,4 @@ public class WishList {
     @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "wishList", fetch = FetchType.EAGER)
-    private List<Computer> computers;
 }

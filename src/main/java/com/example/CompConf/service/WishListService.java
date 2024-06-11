@@ -10,9 +10,9 @@ public interface WishListService {
 
     void addToWishList(WishList wishList);
 
-    List<Computer> getComputerByUserId(Long id);
+    List<Computer> getComputersByWishList(Long id);
 
     List<WishList> getWishListByUserId(Long id);
 
-    void removeFromWishList(WishList wishList);
+    void removeFromWishList(Long id);
 }

@@ -39,24 +39,6 @@ public class WishListServiceImplTest {
         verify(wishListRepository, times(1)).save(wishList);
     }
 
-    @Test
-    void getComputerByUserId() {
-        Long userId = 1L;
-        User user = new User();
-        user.setId(userId);
-        WishList wishList = new WishList();
-        List<WishList> wishLists = new ArrayList<>();
-        wishLists.add(wishList);
-        List<Computer> computers = new ArrayList<>();
-        Computer computer1 = new Computer();
-        Computer computer2 = new Computer();
-        computers.add(computer1);
-        computers.add(computer2);
-        wishList.setComputers(computers);
-        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
-        List<Computer> result = wishListService.getComputerByUserId(userId);
-        assertEquals(2, result.size());
-    }
 
     @Test
     void getWishListByUserId() {
@@ -75,7 +57,7 @@ public class WishListServiceImplTest {
     @Test
     void removeFromWishList() {
         WishList wishList = new WishList();
-        wishListService.removeFromWishList(wishList);
+        wishListService.removeFromWishList(1L);
         verify(wishListRepository, times(1)).delete(wishList);
     }
 }

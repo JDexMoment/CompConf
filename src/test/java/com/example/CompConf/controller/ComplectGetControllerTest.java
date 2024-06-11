@@ -13,8 +13,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -49,20 +51,4 @@ public class ComplectGetControllerTest {
                 .andExpect(content().json(objectMapper.writeValueAsString(complect)));
     }
 
-    @Test
-    void testGetCPU() throws Exception {
-        Complect complect = new Complect();
-        complect.setId(1L);
-        complect.setType("CPU");
-        complect.setName("Intel Core i5-12400F LGA1700 OEM");
-        complect.setCost(16424);
-        complect.setDescription("Процессор Intel Core i5-12400F");
-
-        Mockito.when(complectService.getCPU()).thenReturn(Collections.singletonList(complect));
-
-        mockMvc.perform(get("/complect/CPU")
-                        .contentType(MediaType.APPLICATION_JSON))
-                .andExpect(status().isOk())
-                .andExpect(content().json(objectMapper.writeValueAsString(Collections.singletonList(complect))));
-    }
 }

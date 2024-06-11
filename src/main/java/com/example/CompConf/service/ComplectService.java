@@ -7,15 +7,7 @@ import java.util.Optional;
 
 public interface ComplectService {
 
-    List<Complect> getCPU();
-    List<Complect> getGPU();
-    List<Complect> getMotherBoard();
-    List<Complect> getCooler();
-    List<Complect> getRAM();
-    List<Complect> getSSD();
-    List<Complect> getHDD();
-    List<Complect> getComputerCase();
-    List<Complect> getPowerUnit();
+    List<Complect> getComplectsByType(String type);
 
     Optional<Complect> getComplectById(Long id);
 

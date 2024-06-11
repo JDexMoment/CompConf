@@ -1,9 +1,11 @@
 package com.example.CompConf.service;
 
 import com.example.CompConf.exceptions.UsernameNotFoundException;
+import com.example.CompConf.exceptions.WishListNotFoundException;
 import com.example.CompConf.model.Computer;
 import com.example.CompConf.model.User;
 import com.example.CompConf.model.WishList;
+import com.example.CompConf.repository.ComputerRepository;
 import com.example.CompConf.repository.UserRepository;
 import com.example.CompConf.repository.WishListRepository;
 import lombok.RequiredArgsConstructor;
@@ -21,24 +23,20 @@ public class WishListServiceImpl implements WishListService {
 
     private final UserRepository userRepository;
 
+    private final ComputerRepository computerRepository;
+
     @Override
     public void addToWishList(WishList wishList){
         wishListRepository.save(wishList);
     }
 
     @Override
-    public List<Computer> getComputerByUserId(Long id){
-        Optional<User> user = userRepository.findById(id);
-        if(user.isPresent()){
-            List<WishList> wishLists = wishListRepository.findByUserId(id);
-            List<Computer> computers = new ArrayList<>();
-            for(WishList wishList : wishLists){
-                computers.addAll(wishList.getComputers());
-            }
-            return computers;
-        } else {
-            throw new UsernameNotFoundException(id);
+    public List<Computer> getComputersByWishList(Long id){
+        Optional<WishList> wishList = wishListRepository.findById(id);
+        if(wishList.isEmpty()){
+            throw new WishListNotFoundException(id);
         }
+        return computerRepository.findByWishListId(id);
     }
 
     @Override
@@ -52,7 +50,7 @@ public class WishListServiceImpl implements WishListService {
     }
 
     @Override
-    public void removeFromWishList(WishList wishList) {
-        wishListRepository.delete(wishList);
+    public void removeFromWishList(Long id) {
+        wishListRepository.deleteById(id);
     }
 }
