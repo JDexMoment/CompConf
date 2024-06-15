@@ -22,10 +22,16 @@ public class SpringSecurityConfiguration {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(expressionInterceptUrlRegistry ->
                         expressionInterceptUrlRegistry
-                                .requestMatchers("/registration", "/login", "/complect/**", "/review/**", "user/**").permitAll()
-                                //.requestMatchers(HttpMethod.POST, "/complect").hasAuthority(UserAuthority.PLACE_ORDERS.getAuthority())
+                                .requestMatchers("/registration", "/login", "/review/user/", "/review/type/").permitAll()
+                                .requestMatchers(HttpMethod.POST, "/complect").hasAuthority(UserAuthority.PLACE_ORDERS.getAuthority())
+                                .requestMatchers(HttpMethod.DELETE, "/complect").hasAuthority(UserAuthority.PLACE_ORDERS.getAuthority())
                                 .requestMatchers(HttpMethod.GET, "/computer/**").hasAuthority(UserAuthority.MANAGE_ORDERS.getAuthority())
                                 .requestMatchers(HttpMethod.POST, "/computer").hasAuthority(UserAuthority.MANAGE_ORDERS.getAuthority())
+                                .requestMatchers(HttpMethod.POST, "/review").hasAuthority(UserAuthority.MANAGE_ORDERS.getAuthority())
+                                .requestMatchers(HttpMethod.DELETE, "/review").hasAuthority(UserAuthority.MANAGE_ORDERS.getAuthority())
+                                .requestMatchers(HttpMethod.GET, "/user").hasAuthority(UserAuthority.MANAGE_ORDERS.getAuthority())
+                                .requestMatchers(HttpMethod.POST, "/user").hasAuthority(UserAuthority.MANAGE_ORDERS.getAuthority())
+                                .requestMatchers(HttpMethod.DELETE, "/user").hasAuthority(UserAuthority.MANAGE_ORDERS.getAuthority())
                                 .anyRequest().hasAuthority(UserAuthority.FULL.getAuthority()))
                 .formLogin(Customizer.withDefaults())
                 .csrf(AbstractHttpConfigurer::disable);
